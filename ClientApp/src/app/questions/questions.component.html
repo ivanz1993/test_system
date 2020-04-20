@@ -1,0 +1,33 @@
+<h1>Questions</h1>
+
+<p *ngIf="!questions"><em>Loading...</em></p>
+
+<table class="table table-sm table-hover" *ngIf="(questions)?.length>0">
+  <thead>
+    <tr>
+      <!-- <th>#</th> -->
+      <th>Please check all answers</th>
+      <!-- <th>Creator</th>
+      <th>Date</th>
+      <th></th> -->
+      <!-- <th></th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let question of questions">
+      <!-- <td>{{ blogPost.postId }}</td> -->
+      <!-- <td><a [routerLink]="['/blogpost/', blogPost.postId]">{{ blogPost.title }}</a></td> -->
+      <!-- <td>{{ blogPost.name }}</td> -->
+      <!-- <td>{{ blogPost.dt | date: "dd.MM.y" }}</td> -->
+      <td>{{ question.name }}<br>
+        <input   type="radio" name="{{question.name}}"  [value]="question.option1" [(ngModel)]="question.selectedOption" >{{question.option1}}<br>
+        <input   type="radio" name="{{question.name}}"  [value]="question.option2" [(ngModel)]="question.selectedOption">{{question.option2}}<br>
+        <input   type="radio" name="{{question.name}}"  [value]="question.option3" [(ngModel)]="question.selectedOption">{{question.option3}}<br>
+        <input   type="radio" name="{{question.name}}"  [value]="question.option4" [(ngModel)]="question.selectedOption">{{question.option4}}<br>
+      </td>
+      <!-- <td><a [routerLink]="" (click)="delete(blogPost.postId)" class="btn btn-danger btn-sm float-right">Delete</a></td> -->
+    </tr>
+
+    <button (click)="submit()">Submit</button>
+  </tbody>
+</table>

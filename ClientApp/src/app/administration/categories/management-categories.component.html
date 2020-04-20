@@ -1,0 +1,19 @@
+<h1>Management Categories</h1>
+
+<p *ngIf="!(categories$ | async)"><em>Loading...</em></p>
+<p>
+  <a (click)="openManagementDialog(newCategory)" class="btn btn-primary float-right mb-3">New Category</a>
+</p>
+<table class="table table-sm table-hover" *ngIf="(categories$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of (categories$ | async)">
+      <td>{{ category.name }}<a (click)="openManagementDialog(category)" class="btn btn-primary btn-sm float-right">Edit</a> 
+      </td>
+    </tr>
+  </tbody>
+</table>
